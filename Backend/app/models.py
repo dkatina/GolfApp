@@ -8,7 +8,7 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 
 invites = Table(
-    "event_invits",
+    "event_invites",
     Base.metadata,
     db.Column("player_id", db.ForeignKey("player.id")),
     db.Column("event_id", db.ForeignKey("event.id"))
@@ -34,7 +34,7 @@ class Player(Base):
     account: Mapped['Account'] = relationship(back_populates='player')
     event_players: Mapped[list['EventPlayers']] = relationship(back_populates='player')
     player_scores: Mapped[list['PlayerScore']] = relationship(back_populates='player')
-    invites: Mapped[list['Event']] = relationship(back_populates='invites')
+    invites: Mapped[list['Event']] = relationship(secondary="event_invites", back_populates='invites')
 
 class Event(Base):
     __tablename__ = 'event'
@@ -45,7 +45,7 @@ class Event(Base):
 
     rounds: Mapped[list['Round']] = relationship(back_populates='event')
     event_players: Mapped[list['EventPlayers']] = relationship(back_populates='event')
-    invites: Mapped[list['Player']] = relationship(back_populates='invites')
+    invites: Mapped[list['Player']] = relationship(secondary="event_invites", back_populates='invites')
 
 class Round(Base):
     __tablename__ = 'round'
@@ -75,7 +75,6 @@ class EventPlayers(Base):
     player_id: Mapped[int] = mapped_column(ForeignKey('player.id'), primary_key=True)
     event_id: Mapped[int] = mapped_column(ForeignKey('event.id'), primary_key=True)
 
-    invite_accepted: Mapped[bool] = mapped_column(Boolean)
     event_score: Mapped[int] = mapped_column(Integer)
 
     player: Mapped['Player'] = relationship(back_populates='event_players')

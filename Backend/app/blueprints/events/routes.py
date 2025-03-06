@@ -1,3 +1,4 @@
+import re
 from marshmallow import ValidationError
 from sqlalchemy.orm import Session
 from flask import request, jsonify
@@ -5,7 +6,7 @@ from app.blueprints.players.schemas import players_schema
 from app.models import Event, Player, db, EventPlayers
 from app.extensions import ma
 from app.utils.utils import token_required
-from .schemas import event_schema, events_schema
+from .schemas import event_schema, events_schema, event_players_schema
 from . import event_bp
 
 #GET ALL EVENTS
@@ -35,7 +36,7 @@ def create_event():
         with Session(db.engine) as session:
             session.add(new_event)
             session.commit()
-            new_event_player = EventPlayers(player_id=request.user_id, event_id=new_event.id, invite_accepted=True, event_score=0)
+            new_event_player = EventPlayers(player_id=request.user_id, event_id=new_event.id, event_score=0)
             session.add(new_event_player)
             session.commit()
             return jsonify(event_schema.dump(new_event)), 201
@@ -84,11 +85,46 @@ def get_my_events():
         return jsonify(events_schema.dump(my_events))
     
 
-
+#EVENT PLAYERS
 @event_bp.route('/<int:event_id>/players', methods=['GET'])
 @token_required
 def event_players(event_id):
     with Session(db.engine) as session:
-        event_players = session.query(Player).join(Player.event_players).filter_by(event_id=event_id).all()
-        return jsonify(players_schema.dump(event_players))
+        event = session.get(Event, event_id)
+        event_players = session.query(EventPlayers).filter_by(event_id=event_id).all()
+        return jsonify({"players": event_players_schema.dump(event_players),
+                        "event": event_schema.dump(event),
+                        "invited": players_schema.dump(event.invites)}),200
+    
+#INVITE PLAYER
+@event_bp.route('/<int:event_id>/invite-player/<int:player_id>', methods=["PUT"])
+@token_required
+def invite_player(event_id, player_id):
+    with Session(db.engine) as session:
+        event = session.get(Event, event_id)
+        player = session.get(Player, player_id)
+        if event and player:
+            if event.owner_id == int(request.user_id):
+                if player not in event.invites:
+                    event.invites.append(player)
+                    session.commit()
+                    return jsonify({"message": f"Successfully invited {player.name}"})
+                else:
+                    return jsonify({"Error": "player already invited."}), 400
+            else:
+                return jsonify({"Error": "You must be the event owner to invite players"}), 400
+        else:
+            return jsonify({"Error": "Invalid event_id or player_id."}), 400
+        
+
+
+    
+@event_bp.route('/<int:event_id>/leaderboard', methods=['GET'])
+@token_required
+def leaderboard(event_id):
+    with Session(db.engine) as session:
+        event = session.get(Event, event_id)
+        event_players = session.query(EventPlayers).filter_by(event_id=event_id).order_by(EventPlayers.event_score).all()[::-1]
+        return jsonify({"players": event_players_schema.dump(event_players),
+                        "event": event_schema.dump(event)}),200
     
