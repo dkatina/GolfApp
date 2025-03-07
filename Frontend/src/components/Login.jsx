@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import api from '../api/axios';
+import { usePlayer } from '../context/PlayerContext';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const {player, setPlayer} = usePlayer();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -9,13 +12,13 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-    const data = await response.json();
-    alert(data.message);
+    try {
+      const response = await api.post('/accounts/login', formData);
+      alert(response.data.message)
+      setPlayer({...response.data.player, "token": response.data.token});
+    } catch (error) {
+      alert(error.response?.data?.message || 'An error occurred');
+    }
   };
 
   return (
