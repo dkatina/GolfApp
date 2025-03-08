@@ -3,14 +3,14 @@ import { createContext, useContext, useState } from 'react';
 const PlayerContext = createContext();
 
 export function PlayerProvider({ children }) {
-    const getUserFromLS=()=>{
+    const getPlayerFromLS=()=>{
         let player =localStorage.getItem('current_player')
         if (player){
             return JSON.parse(player)
         }
     }
 
-    const [player, _setPlayer] = useState(null);
+    const [player, _setPlayer] = useState(getPlayerFromLS()??{});
 
     const setPlayer=(player)=>{
         localStorage.setItem('current_player', JSON.stringify(player))
@@ -19,7 +19,7 @@ export function PlayerProvider({ children }) {
 
 
     return (
-    <PlayerContext.Provider value={{ player, setPlayer }}>
+    <PlayerContext.Provider value={{ player, setPlayer, getPlayerFromLS }}>
         {children}
     </PlayerContext.Provider>
     );

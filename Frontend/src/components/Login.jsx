@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import api from '../api/axios';
 import { usePlayer } from '../context/PlayerContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const {player, setPlayer} = usePlayer();
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +18,7 @@ function Login() {
       const response = await api.post('/accounts/login', formData);
       alert(response.data.message)
       setPlayer({...response.data.player, "token": response.data.token});
+      navigate('/')
     } catch (error) {
       alert(error.response?.data?.message || 'An error occurred');
     }
