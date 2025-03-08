@@ -7,6 +7,7 @@ import Events from './views/Events';
 import EventForm from './views/EventForm';
 import EventDetails from './views/EventDetails';
 import InvitePlayer from './views/InvitePlayer';
+import MyInvites from './views/MyInvites';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/event-form" element={<EventForm/>}/>
             <Route path="/event-details" element={<EventDetails/>}/>
             <Route path="/invite-player" element={<InvitePlayer/>}/>
+            <Route path="/my-invites" element={<MyInvites/>}/>
           </Routes>
         </div>
       </div>

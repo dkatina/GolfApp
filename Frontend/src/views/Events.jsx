@@ -3,6 +3,7 @@ import api from '../api/axios';
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate } from 'react-router-dom';
 import EventBadge from '../components/EventBadge';
+import InviteBadge from '../components/InviteBadge';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -38,6 +39,7 @@ const Events = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">My Events</h1>
+      <InviteBadge/>
       {events.length === 0 ? (
         <p>No events found</p>
       ) : (
