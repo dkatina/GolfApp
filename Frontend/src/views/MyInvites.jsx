@@ -10,7 +10,7 @@ const MyInvites = () => {
     {console.log(invites)}
     <div>MyInvites</div>
     {invites?.map((invite) => (
-        <EventBadge event={invite} invite={true}/>
+        <EventBadge key={invite.id}event={invite} invite={true}/>
     ))}
     </>
   )

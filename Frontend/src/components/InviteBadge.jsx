@@ -33,7 +33,8 @@ const InviteBadge = () => {
         fetchInvites();
       }, []);
     
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault()
         navigate('/my-invites', {state : {invites: invites}})
     }
 

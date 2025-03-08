@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import AcceptButton from './AcceptButton';
+import DeclineButton from './DeclineButton';
 
 const EventBadge = ({ event, invite = false }) => {
   const navigate = useNavigate()
@@ -10,16 +12,19 @@ const EventBadge = ({ event, invite = false }) => {
   };
 
   return (
+    <>
     <div onClick={() => handleEventClick(event)}>
         <h2>{event.title}</h2>
         <p>Host: {event.owner.name}</p>
-        {invite&&
-          <>
-          <button>Accept</button>
-          <button>Decline</button>
-          </>
-        }
+        
     </div>
+    {invite&&
+      <>
+      <AcceptButton event={event}/>
+      <DeclineButton event={event}/>
+      </>
+    }
+    </>
   )
 }
 
