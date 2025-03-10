@@ -42,11 +42,16 @@ const EventDetails = () => {
     navigate('/invite-player', { state: { event } });
   };
 
+  const handleScore = (event) => {
+    navigate('/edit-score', { state: { event } });
+  }
+
 
   return (
     <>
     <div>EventDetails</div>
     {player.id == event.owner_id&& <button onClick={() => handleInvite(event)}>Invite Player</button>}
+    <button onClick={() => handleScore(event)}>Edit Score</button>
     
     <h1>{event.title}</h1>
     {players.map((player) =>(

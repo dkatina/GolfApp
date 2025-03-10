@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import NavBar2 from './components/NavBar2';
 import Login from './components/Login';
 import Register from './views/Register';
 import Home from './components/Home';
@@ -8,6 +8,7 @@ import EventForm from './views/EventForm';
 import EventDetails from './views/EventDetails';
 import InvitePlayer from './views/InvitePlayer';
 import MyInvites from './views/MyInvites';
+import EditScore from './views/EditScore';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        <NavBar />
+        
         <div className="container mx-auto p-4">
           <Routes>
             <Route path="/register" element={<Register />} />
@@ -29,8 +30,10 @@ function App() {
             <Route path="/event-details" element={<EventDetails/>}/>
             <Route path="/invite-player" element={<InvitePlayer/>}/>
             <Route path="/my-invites" element={<MyInvites/>}/>
+            <Route path="/edit-score" element={<EditScore/>}/>
           </Routes>
         </div>
+        <NavBar2/>
       </div>
     </Router>
   );
