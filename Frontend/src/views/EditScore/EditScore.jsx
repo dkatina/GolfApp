@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import api from '../api/axios';
+import api from '../../api/axios';
 import { useLocation, useNavigate} from 'react-router-dom';
-import { usePlayer } from '../context/PlayerContext';
-import AddPoint from '../components/AddPoint';
-import RemovePoint from '../components/RemovePoint';
+import { usePlayer } from '../../context/PlayerContext';
+import AddPoint from '../../components/AddPoint';
+import RemovePoint from '../../components/RemovePoint';
+import './styles.css'
 
 
 
@@ -48,11 +49,15 @@ const EditScore = () => {
 
   return (
     <>
-    <div>EditScore</div>
-    <h2>{score}</h2>
-    <AddPoint event={event} setScore={setScore}/>
-    <RemovePoint event={event} setScore={setScore}/>
-    <button onClick={()=>handleLeaderboardClick(event)}>Leaderboard</button>
+    <div className='page-header'>
+      <h1>EditScore</h1>
+    </div>
+    <div className="body-box">
+      <h2>{score}</h2>
+      <AddPoint event={event} setScore={setScore}/>
+      <RemovePoint event={event} setScore={setScore}/>
+      <button onClick={()=>handleLeaderboardClick(event)}>Leaderboard</button>
+    </div>
     </>
   )
 }

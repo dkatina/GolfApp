@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { usePlayer } from '../context/PlayerContext'
 import api from '../api/axios'
 import { useNavigate } from 'react-router-dom'
+import { Badge } from '@mui/material'
+import MailIcon from '@mui/icons-material/Mail';
 
 
 const InviteBadge = () => {
@@ -41,9 +43,17 @@ const InviteBadge = () => {
 
   return (
     <>
-    <div onClick={handleClick}>Invites</div>
-    {invites?.length != 0 && <p>{invites.length}</p>}
+    {invites?.length != 0?
+    <Badge onClick={handleClick}  badgeContent={invites.length} color="secondary">
+      <MailIcon color="action" sx={{fontSize: 30}} />
+    </Badge>
+     :
+     <Badge color="secondary" >
+      <MailIcon color="action" sx={{fontSize: 30}} />
+      </Badge>
+     }
     
+      
     </>
   )
 }

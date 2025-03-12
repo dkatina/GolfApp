@@ -1,6 +1,11 @@
+*{
+    margin: 0;
+    padding:0
+}
+
 body{
     height: 100vh;
-    font-family: "Roboto", sans-serif !important; 
+    font-family: "Noto Sans JP", sans-serif !important; 
     font-optical-sizing: auto !important;
     font-weight: 400 !important;
     font-style: normal !important;

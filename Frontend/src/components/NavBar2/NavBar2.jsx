@@ -28,6 +28,7 @@ export default function NavBar2() {
   return (
     <Box sx={{ width: 500 }} className='navStyle'>
       <BottomNavigation
+        className='navButton'
         showLabels
         value={value}
         onChange={(event, newValue) => {

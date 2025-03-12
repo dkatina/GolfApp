@@ -1,0 +1,31 @@
+body{
+    height:auto !important;
+}
+.scroll-box {
+    height: 78vh;
+    margin-top: 12vh;
+    overflow: scroll;
+
+}
+
+
+
+.events-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.events-actions{
+    display: flex;
+    align-items: center;
+    margin-right: 5vh;
+    gap: 2vh;
+}
+
+.no-events{
+    margin-top: 40vh;
+    text-align: center;
+    color: rgb(201, 198, 198)
+}

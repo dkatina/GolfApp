@@ -1,10 +1,13 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import { usePlayer } from '../context/PlayerContext'
+import { usePlayer } from '../../context/PlayerContext'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import api from '../api/axios'
-import EventPlayer from '../components/EventPlayer'
+import api from '../../api/axios'
+import EventPlayer from '../../components/EventPlayer'
+import './styles.css'
+import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
+import { Button } from '@mui/material'
 
 const EventDetails = () => {
 
@@ -49,14 +52,19 @@ const EventDetails = () => {
 
   return (
     <>
-    <div>EventDetails</div>
-    {player.id == event.owner_id&& <button onClick={() => handleInvite(event)}>Invite Player</button>}
-    <button onClick={() => handleScore(event)}>Edit Score</button>
+    <div className='page-header actions-header'>
+      <h1>{event.title}</h1>
+      <div className='actions'>
+        {player.id == event.owner_id&& <PersonAddAltRoundedIcon onClick={() => handleInvite(event)}/>}
+        <Button variant="text" onClick={() => handleScore(event)}>Edit Score</Button>
+      </div>
+    </div>
+    <div className='body-box'>
     
-    <h1>{event.title}</h1>
-    {players.map((player) =>(
-      <EventPlayer player={player}/>
-    ))}
+      {players.map((player) =>(
+        <EventPlayer player={player}/>
+      ))}
+    </div>
     </>
   )
 }
