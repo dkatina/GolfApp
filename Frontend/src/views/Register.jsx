@@ -1,5 +1,5 @@
 import React from 'react'
-import EditForm from '../components/EditForm';
+import EditForm from '../components/EditForm/EditForm';
 import api from '../api/axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

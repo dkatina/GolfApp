@@ -2,6 +2,9 @@ import { useState } from 'react';
 import api from '../api/axios';
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate } from 'react-router-dom';
+import { TextField, Button } from '@mui/material';
+import './EditForm/styles.css'
+
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -25,24 +28,31 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
-      <input
+    <form onSubmit={handleSubmit} className="my-form">
+      <h1>Login</h1>
+      <TextField
+        id="outlined-basic"
+        label="Email"
+        variant="outlined"
         type="email"
         name="email"
         placeholder="Email"
         value={formData.email}
         onChange={handleChange}
-        className="block w-full p-2 mb-4 border border-gray-300 rounded"
+        className="field"
       />
-      <input
+      <TextField
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
         type="password"
         name="password"
         placeholder="Password"
         value={formData.password}
         onChange={handleChange}
-        className="block w-full p-2 mb-4 border border-gray-300 rounded"
+        className="field"
       />
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
+      <Button type="submit" variant="contained" className="field">Login</Button>
     </form>
   );
 }

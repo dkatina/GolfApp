@@ -1,0 +1,9 @@
+.navStyle {
+    position: fixed !important;
+    bottom: 0;
+    width: 100% !important;
+    border-top: 1px;
+    padding-bottom: 4%;
+
+  };
+

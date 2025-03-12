@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { TextField } from '@mui/material';
+import { Button } from '@mui/material'
+import './styles.css'
 
 function EditForm({ handleSubmit, formData, setFormData } ) {
   
@@ -10,34 +13,50 @@ function EditForm({ handleSubmit, formData, setFormData } ) {
   
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
-      <input
+    <>
+    
+    <form onSubmit={handleSubmit} className="my-form">
+    <h1>Register</h1>
+      <TextField
+        required
+        id="outlined-basic"
+        label="Username"
+        variant="outlined"
         type="text"
         name="username"
         placeholder="Username"
         value={formData.username}
         onChange={handleChange}
-        className="block w-full p-2 mb-4 border border-gray-300 rounded"
+        className="field"
       />
-      <input
+      <TextField
+        required
+        id="outlined-basic"
+        label="Email"
+        variant="outlined"
         type="email"
         name="email"
         placeholder="Email"
         value={formData.email}
         onChange={handleChange}
-        className="block w-full p-2 mb-4 border border-gray-300 rounded"
+        className="field"
       />
-      <input
+      <TextField
+        required
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
         type="password"
         name="password"
         placeholder="Password"
         value={formData.password}
         onChange={handleChange}
-        className="block w-full p-2 mb-4 border border-gray-300 rounded"
+        className="field"
       />
       
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Register</button>
+      <Button variant="contained" type="submit" className="my-button">Register</Button>
     </form>
+    </>
   );
 }
 
