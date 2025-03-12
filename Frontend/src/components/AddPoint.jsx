@@ -1,6 +1,9 @@
 import React from 'react'
 import { usePlayer } from '../context/PlayerContext'
 import api from '../api/axios';
+import { Button } from '@mui/material';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 
 
 const AddPoint = ({event, setScore}) => {
@@ -15,7 +18,7 @@ const AddPoint = ({event, setScore}) => {
                   Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response)
+         
             setScore(response.data.event_score)
           } catch (error) {
             alert(error.response?.data?.message || 'An error occurred');
@@ -23,7 +26,7 @@ const AddPoint = ({event, setScore}) => {
     }
 
   return (
-    <button onClick={(e)=> handleClick(e)}>Add Point</button>
+    <Button onClick={(e)=> handleClick(e)}><KeyboardArrowUpIcon sx={{fontSize: 70}}/></Button>
   )
 }
 

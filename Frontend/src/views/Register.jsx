@@ -12,7 +12,6 @@ const Register = () => {
         e.preventDefault();
         const response = await api.post('/accounts/', formData);
         alert(response.data.message)
-        console.log(response.data)
         navigate('/login')
       };
 

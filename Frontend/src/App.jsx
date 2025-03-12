@@ -6,8 +6,8 @@ import Home from './components/Home';
 import Events from './views/Events/Events';
 import EventForm from './views/EventForm';
 import EventDetails from './views/EventDetails/EventDetails';
-import InvitePlayer from './views/InvitePlayer';
-import MyInvites from './views/MyInvites';
+import InvitePlayer from './views/InvitePlayer/InvitePlayer';
+import MyInvites from './views/MyInvites/MyInvites';
 import EditScore from './views/EditScore/EditScore';
 
 

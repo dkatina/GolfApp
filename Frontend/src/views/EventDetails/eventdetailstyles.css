@@ -2,7 +2,7 @@ body{
     height:auto !important;
 }
 
-.page-header {
+.epage-header {
     position: fixed !important;
     top: 0;
     width: 100vw !important;
@@ -12,23 +12,30 @@ body{
     padding-left: 20px;;
   }
 
-  .body-box {
+  .ebody-box {
     height: 78vh;
     margin-top: 12vh;
     overflow: scroll;
 
 }
 
-.actions-header {
+.eactions-header {
     display: flex;
 
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
-.actions{
+.eactions{
     display: flex;
     align-items: center;
     margin-right: 5vh;
     gap: 2vh;
+}
+
+.leaderboard{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: 1px solid rgb(138, 138, 138)
 }

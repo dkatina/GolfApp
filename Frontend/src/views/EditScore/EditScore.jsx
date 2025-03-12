@@ -6,6 +6,7 @@ import { usePlayer } from '../../context/PlayerContext';
 import AddPoint from '../../components/AddPoint';
 import RemovePoint from '../../components/RemovePoint';
 import './styles.css'
+import { Button } from '@mui/material';
 
 
 
@@ -41,7 +42,6 @@ const EditScore = () => {
       }, []);
 
       const handleLeaderboardClick = (event) => {
-        console.log(event)
         navigate('/event-details', { state: { event } });
       };
     
@@ -49,14 +49,23 @@ const EditScore = () => {
 
   return (
     <>
-    <div className='page-header'>
+    <div className='page-header actions-header'>
       <h1>EditScore</h1>
+      <div className='actions'>
+        <Button variant='text' onClick={()=>handleLeaderboardClick(event)}>Leaderboard</Button>
+      </div>
     </div>
     <div className="body-box">
-      <h2>{score}</h2>
-      <AddPoint event={event} setScore={setScore}/>
-      <RemovePoint event={event} setScore={setScore}/>
-      <button onClick={()=>handleLeaderboardClick(event)}>Leaderboard</button>
+      <div className="score-box">
+        <AddPoint event={event} setScore={setScore}/>
+        <div>
+          
+          <div className='score'>{score}</div>
+        </div>
+        
+        
+        <RemovePoint event={event} setScore={setScore}/>
+      </div>
     </div>
     </>
   )

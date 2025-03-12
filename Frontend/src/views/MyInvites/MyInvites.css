@@ -2,7 +2,7 @@ body{
     height:auto !important;
 }
 
-.page-header {
+.my-invites-header {
     position: fixed !important;
     top: 0;
     width: 100vw !important;
@@ -12,13 +12,10 @@ body{
     padding-left: 20px;;
   }
 
-  .body-box {
-    height: 40vh;
-    margin-top: 25vh;
+  .my-invites-body {
+    height: 78vh;
+    margin-top: 12vh;
     overflow: scroll;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 }
 
@@ -48,5 +45,15 @@ body{
    
 }
 
+.invite {
+    width: 83vw;
+}
 
-
+.player-box{
+    border: 1px solid rgb(219, 219, 219);
+    height: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 2px;
+    overflow: scroll;
+}

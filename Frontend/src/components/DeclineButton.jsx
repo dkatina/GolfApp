@@ -2,6 +2,7 @@ import React from 'react'
 import api from '../api/axios'
 import { usePlayer } from '../context/PlayerContext'
 import { useNavigate } from 'react-router-dom'
+import CloseIcon from '@mui/icons-material/Close';
 
 const DeclineButton = ( {event} ) => {
     const {player} = usePlayer();
@@ -9,7 +10,7 @@ const DeclineButton = ( {event} ) => {
 
     const handleClick = async (e) => {
         const token = player.token;
-        console.log(token);
+
         e.preventDefault();
         try {
             const response = await api.delete(`/players/decline-invite/${event.id}`, {
@@ -17,7 +18,7 @@ const DeclineButton = ( {event} ) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
+      
             navigate('/events/show');
         } catch (error) {
             alert(error.response?.data?.message || 'An error occurred');
@@ -27,7 +28,7 @@ const DeclineButton = ( {event} ) => {
 
 
   return (
-    <button onClick={handleClick}>Decline</button>
+    <CloseIcon onClick={handleClick}/>
   )
 }
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { usePlayer } from '../context/PlayerContext'
 import api from '../api/axios';
+import { Button } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
 const RemovePoint = ({event, setScore}) => {
@@ -15,7 +17,6 @@ const RemovePoint = ({event, setScore}) => {
                   Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response)
             setScore(response.data.event_score)
           } catch (error) {
             alert(error.response?.data?.message || 'An error occurred');
@@ -23,7 +24,7 @@ const RemovePoint = ({event, setScore}) => {
     }
 
   return (
-    <button onClick={(e)=> handleClick(e)}>Remove Point</button>
+    <Button onClick={(e)=> handleClick(e)}><KeyboardArrowDownIcon sx={{fontSize: 70}}/></Button>
   )
 }
 

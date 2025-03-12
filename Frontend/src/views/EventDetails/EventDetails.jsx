@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import api from '../../api/axios'
 import EventPlayer from '../../components/EventPlayer'
-import './styles.css'
+import './eventdetailstyles.css'
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
 import { Button } from '@mui/material'
 
@@ -52,15 +52,15 @@ const EventDetails = () => {
 
   return (
     <>
-    <div className='page-header actions-header'>
+    <div className='epage-header eactions-header'>
       <h1>{event.title}</h1>
-      <div className='actions'>
+      <div className='eactions'>
         {player.id == event.owner_id&& <PersonAddAltRoundedIcon onClick={() => handleInvite(event)}/>}
         <Button variant="text" onClick={() => handleScore(event)}>Edit Score</Button>
       </div>
     </div>
-    <div className='body-box'>
-    
+    <div className='ebody-box'>
+      <div className='leaderboard'>Leaderboard</div>
       {players.map((player) =>(
         <EventPlayer player={player}/>
       ))}

@@ -8,23 +8,25 @@ const EventBadge = ({ event, invite = false }) => {
   const navigate = useNavigate()
 
   const handleEventClick = (event) => {
-    console.log(event)
     navigate('/event-details', { state: { event } });
   };
 
   return (
     <>
     <div className="event-badge" onClick={() => handleEventClick(event)}>
+        <div>
         <h2>{event.title}</h2>
         <p>Host: {event.owner.name}</p>
-        
-    </div>
-    {invite&&
-      <>
+        </div>
+        {invite&&
+      <div className='action-box'>
       <AcceptButton event={event}/>
       <DeclineButton event={event}/>
-      </>
+      </div>
     }
+        
+    </div>
+    
     </>
   )
 }
