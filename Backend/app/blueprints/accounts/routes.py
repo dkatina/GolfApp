@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy.orm import Session
+from app.blueprints.players.schemas import player_schema
 from app.models import Account, Base, Player
 from app.models import db
 from . import account_bp
@@ -19,7 +20,9 @@ def login():
         account = session.query(Account).filter_by(email=account_data['email']).first()
         if account and check_password_hash(account.password, account_data['password']):
             token = encode_token(account.player.id)
-            return jsonify({'token': token}), 200
+            return jsonify({'token': token,
+                            "message": "Successful Login",
+                            "player": player_schema.dump(account.player)}), 200
         return jsonify({'error': 'Invalid username or password'}), 401
 
 #Get ALl Accounts
@@ -46,16 +49,17 @@ def get_account():
 def create_account():
 
     try:
-        account_data = account_schema.load(request.json)
+        account_data = request.json
         new_account = Account(email=account_data['email'], password=generate_password_hash(account_data['password']))
         
         with Session(db.engine) as session:
             session.add(new_account)
             session.commit()
-            new_player = Player(account_id=new_account.id)
+            new_player = Player(account_id=new_account.id, name=account_data['username'])
             session.add(new_player)
             session.commit()
-            return jsonify(account_schema.dump(new_account)), 201
+            return jsonify({'message': "Account creation successful",
+                           "Account": account_schema.dump(new_account)}), 201
     except ValidationError as err:
         return jsonify({'errors': err.messages}), 400
 

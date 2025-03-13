@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar2 from './components/NavBar2/NavBar2';
 import Login from './components/Login';
 import Register from './views/Register';
-import Home from './components/Home';
+import Home from './views/Home/Home';
 import Events from './views/Events/Events';
 import EventForm from './views/EventForm';
 import EventDetails from './views/EventDetails/EventDetails';

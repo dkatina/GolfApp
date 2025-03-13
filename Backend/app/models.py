@@ -31,6 +31,7 @@ class Player(Base):
     picture: Mapped[str] = mapped_column(String, nullable=True)
     account_id: Mapped[int] = mapped_column(ForeignKey('account.id'))
 
+    owned_events: Mapped[list['Event']] = relationship(back_populates='owner')
     account: Mapped['Account'] = relationship(back_populates='player')
     event_players: Mapped[list['EventPlayers']] = relationship(back_populates='player')
     player_scores: Mapped[list['PlayerScore']] = relationship(back_populates='player')
@@ -43,6 +44,7 @@ class Event(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     owner_id: Mapped[int] = mapped_column(ForeignKey('player.id'))
 
+    owner: Mapped['Player'] = relationship(back_populates='owned_events')
     rounds: Mapped[list['Round']] = relationship(back_populates='event')
     event_players: Mapped[list['EventPlayers']] = relationship(back_populates='event')
     invites: Mapped[list['Player']] = relationship(secondary="event_invites", back_populates='invites')

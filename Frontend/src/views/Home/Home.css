@@ -1,0 +1,26 @@
+.page-header {
+    position: fixed !important;
+    top: 0;
+    width: 100vw !important;
+    margin-top: 2vh;
+    padding: 10px;
+    padding-left: 20px
+  }
+
+  .home-body{
+        height: 78vh;
+        margin-top: 12vh;
+        overflow: scroll
+    }
+
+img{
+    height: 60px;
+    margin-right: 50px
+}
+  
+
+.home-actions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}

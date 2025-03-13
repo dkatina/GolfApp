@@ -78,11 +78,11 @@ def accept_invite(event_id):
                 session.add(event_player)
                 player.invites.remove(event)
                 session.commit()
-                return jsonify({"Message": f"Invite to {event.title} Accepted"}), 200
+                return jsonify({"message": f"Invite to {event.title} Accepted"}), 200
             else:
-                return jsonify({"Error": f"You are not invited to this event"}), 400
+                return jsonify({"error": f"You are not invited to this event"}), 400
         else:
-            return jsonify({"Error": f"Invalid event_id"}), 400
+            return jsonify({"error": f"Invalid event_id"}), 400
 
 #DECLINE INVITE       
 @player_bp.route("/decline-invite/<int:event_id>", methods=['DELETE']) 
@@ -96,11 +96,11 @@ def decline_invite(event_id):
             if event in player.invites:
                 player.invites.remove(event)
                 session.commit()
-                return jsonify({"Message": f"Invite to {event.title} Declined."}), 200
+                return jsonify({"message": f"Invite to {event.title} Declined."}), 200
             else:
-                return jsonify({"Error": f"You are not invited to this event."}), 400
+                return jsonify({"error": f"You are not invited to this event."}), 400
         else:
-            return jsonify({"Error": f"Invalid event_id"}), 400
+            return jsonify({"error": f"Invalid event_id"}), 400
         
 
 @player_bp.route("/add-event-point/<int:event_id>", methods=["PUT"])
@@ -114,7 +114,7 @@ def add_event_point(event_id):
             session.commit()
             return event_player_schema.jsonify(player_event), 200
         else:
-            return jsonify({"Error": "Invalid player_id or event_id"})
+            return jsonify({"error": "Invalid player_id or event_id"})
         
 @player_bp.route("/remove-event-point/<int:event_id>", methods=["DELETE"])
 @token_required
@@ -127,7 +127,7 @@ def remove_event_point(event_id):
             session.commit()
             return event_player_schema.jsonify(player_event), 200
         else:
-            return jsonify({"Error": "Invalid player_id or event_id or score at 0"})
+            return jsonify({"error": "Invalid player_id or event_id or score at 0"})
 
 
 

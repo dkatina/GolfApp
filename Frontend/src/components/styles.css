@@ -8,7 +8,7 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .event-player {
@@ -16,7 +16,7 @@
     height: 50px;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+    border-radius: 10px
    
 }
 
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-left: 5px;
+    margin-left: 5px
 }
 
 .player-badge {
@@ -36,20 +36,20 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center
 }
 
 .status {
-    color: rgb(110, 110, 110);
+    color: rgb(110, 110, 110)
 }
 
 .invite-button{
-    background-color: rgb(148, 230, 230) !important;
+    background-color: rgb(148, 230, 230) !important
 }
 
 .action-box{
     width:80px;
     margin-right: 10px;;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between
 }

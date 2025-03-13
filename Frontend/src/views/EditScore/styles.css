@@ -9,7 +9,7 @@ body{
     margin-top: 2vh;
     padding: 10px;
   
-    padding-left: 20px;;
+    padding-left: 20px
   }
 
   .body-box {
@@ -18,7 +18,7 @@ body{
     overflow: scroll;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center
 
 }
 
@@ -27,11 +27,11 @@ body{
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding-right: 100px;
+    padding-right: 100px
 }
 
 .actions{
-    margin-right: 40px;
+    margin-right: 40px
 }
 
 .score-box{
@@ -44,7 +44,7 @@ body{
 }
 
 .score {
-    font-size: 65px;
+    font-size: 65px
    
 }
 

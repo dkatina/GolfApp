@@ -5,10 +5,12 @@ from marshmallow import fields
 
 
 class EventSchema(ma.SQLAlchemyAutoSchema):
+    owner = fields.Nested("PlayerSchema")
     class Meta:
         model = Event
         include_fk = True
         load_instance = True
+        include_relationships = True
 
 event_schema = EventSchema()
 events_schema = EventSchema(many=True)

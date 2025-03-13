@@ -8,15 +8,13 @@ body{
     width: 100vw !important;
     margin-top: 2vh;
     padding: 10px;
-  
-    padding-left: 20px;;
+    padding-left: 20px
   }
 
   .my-invites-body {
     height: 78vh;
     margin-top: 12vh;
-    overflow: scroll;
-
+    overflow: scroll
 }
 
 .actions-header {
@@ -24,11 +22,11 @@ body{
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding-right: 100px;
+    padding-right: 100px
 }
 
 .actions{
-    margin-right: 40px;
+    margin-right: 40px
 }
 
 .score-box{
@@ -41,12 +39,12 @@ body{
 }
 
 .score {
-    font-size: 65px;
+    font-size: 65px
    
 }
 
 .invite {
-    width: 83vw;
+    width: 83vw
 }
 
 .player-box{
@@ -55,5 +53,5 @@ body{
     margin-top: 10px;
     border-radius: 5px;
     padding: 2px;
-    overflow: scroll;
+    overflow: scroll
 }

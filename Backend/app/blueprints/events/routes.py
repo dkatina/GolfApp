@@ -6,7 +6,7 @@ from app.blueprints.players.schemas import players_schema
 from app.models import Event, Player, db, EventPlayers
 from app.extensions import ma
 from app.utils.utils import token_required
-from .schemas import event_schema, events_schema, event_players_schema
+from .schemas import event_schema, events_schema, event_players_schema, event_player_schema
 from . import event_bp
 
 #GET ALL EVENTS
@@ -84,6 +84,15 @@ def get_my_events():
         my_events = session.query(Event).join(Event.event_players).filter_by(player_id=request.user_id).all()
         return jsonify(events_schema.dump(my_events))
     
+#Event Score
+@event_bp.route('/<int:event_id>/my-score', methods=['GET'])
+@token_required
+def my_event_score(event_id):
+    with Session(db.engine) as session:
+        my_event = session.query(EventPlayers).filter_by(player_id=request.user_id, event_id=event_id).first()
+        print(my_event)
+        return jsonify(event_player_schema.dump(my_event))
+    
 
 #EVENT PLAYERS
 @event_bp.route('/<int:event_id>/players', methods=['GET'])
@@ -103,6 +112,7 @@ def invite_player(event_id, player_id):
     with Session(db.engine) as session:
         event = session.get(Event, event_id)
         player = session.get(Player, player_id)
+        print(player)
         if event and player:
             if event.owner_id == int(request.user_id):
                 if player not in event.invites:

@@ -32,7 +32,7 @@ def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         token = None
-        # Look for the token in the Authorization header
+        # Look for the token in the Authorization heade
         if 'Authorization' in request.headers:
             token = request.headers['Authorization'].split(" ")[1]
         

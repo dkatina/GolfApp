@@ -4,13 +4,13 @@
     flex-direction: column;
     justify-content: center;
     height: 80vh;
-    padding: 10px;
+    padding: 10px
 }
 
 .field {
-    margin-top: 15px !important;
+    margin-top: 15px !important
   }
 
 .my-button {
-    margin-top: 15px!important;
+    margin-top: 15px!important
 }
