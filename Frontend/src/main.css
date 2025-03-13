@@ -2,11 +2,19 @@
     margin: 0;
     padding:0
 }
+:root {
+    --color-1: #a7c8b9;
+    --color-2: #b8d6c1;
+    --main: #d2eae0;
+    --color-4: #e6f9e7;
+    --color-5: #f5fff7;
+  }
 
 body{
     height: 100vh;
     font-family: "Noto Sans JP", sans-serif !important; 
     font-optical-sizing: auto !important;
     font-weight: 400 !important;
-    font-style: normal !important
+    font-style: normal !important;
+    background-color: var(--main);
 }
